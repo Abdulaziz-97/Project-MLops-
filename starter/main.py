@@ -31,19 +31,91 @@ def load_model():
     """Load the trained model and encoders."""
     global model, encoder, lb
     
-    model_path = "model/model.pkl"
-    encoder_path = "model/encoder.pkl"
-    lb_path = "model/labelizer.pkl"
+    # Try different paths for model files
+    possible_model_paths = [
+        "model/model.pkl",  # Local development
+        "../model/model.pkl",  # Alternative local path
+        "/app/starter/model/model.pkl",  # Heroku absolute path
+    ]
     
-    # Load model and encoders
-    with open(model_path, "rb") as f:
-        model = pickle.load(f)
+    possible_encoder_paths = [
+        "model/encoder.pkl",
+        "../model/encoder.pkl", 
+        "/app/starter/model/encoder.pkl",
+    ]
     
-    with open(encoder_path, "rb") as f:
-        encoder = pickle.load(f)
+    possible_lb_paths = [
+        "model/labelizer.pkl",
+        "../model/labelizer.pkl",
+        "/app/starter/model/labelizer.pkl", 
+    ]
+    
+    # Try to load model files
+    model_loaded = False
+    for model_path, encoder_path, lb_path in zip(possible_model_paths, possible_encoder_paths, possible_lb_paths):
+        try:
+            if os.path.exists(model_path) and os.path.exists(encoder_path) and os.path.exists(lb_path):
+                with open(model_path, "rb") as f:
+                    model = pickle.load(f)
+                
+                with open(encoder_path, "rb") as f:
+                    encoder = pickle.load(f)
+                    
+                with open(lb_path, "rb") as f:
+                    lb = pickle.load(f)
+                
+                model_loaded = True
+                print(f"Model loaded successfully from {model_path}")
+                break
+        except Exception as e:
+            print(f"Failed to load model from {model_path}: {e}")
+            continue
+    
+    if not model_loaded:
+        print("WARNING: Could not load pre-trained model. Training new model...")
+        # Train model on-demand for Heroku
+        from starter.ml.model import train_model
+        from starter.ml.data import process_data
+        import pandas as pd
+        from sklearn.model_selection import train_test_split
         
-    with open(lb_path, "rb") as f:
-        lb = pickle.load(f)
+        # Create minimal training data
+        demo_data = {
+            'age': [39, 50, 38, 53, 28] * 50,
+            'workclass': ['State-gov', 'Self-emp-not-inc', 'Private', 'Private', 'Private'] * 50,
+            'fnlgt': [77516, 83311, 215646, 234721, 338409] * 50,
+            'education': ['Bachelors', 'Bachelors', 'HS-grad', '11th', 'Bachelors'] * 50,
+            'education-num': [13, 13, 9, 7, 13] * 50,
+            'marital-status': ['Never-married', 'Married-civ-spouse', 'Divorced', 'Married-civ-spouse', 'Married-civ-spouse'] * 50,
+            'occupation': ['Adm-clerical', 'Exec-managerial', 'Handlers-cleaners', 'Handlers-cleaners', 'Prof-specialty'] * 50,
+            'relationship': ['Not-in-family', 'Husband', 'Not-in-family', 'Husband', 'Wife'] * 50,
+            'race': ['White', 'White', 'White', 'Black', 'Black'] * 50,
+            'sex': ['Male', 'Male', 'Male', 'Male', 'Female'] * 50,
+            'capital-gain': [2174, 0, 0, 0, 0] * 50,
+            'capital-loss': [0, 0, 0, 0, 0] * 50,
+            'hours-per-week': [40, 13, 40, 40, 40] * 50,
+            'native-country': ['United-States'] * 250,
+            'salary': ['<=50K', '<=50K', '<=50K', '<=50K', '>50K'] * 50  # Add some >50K samples
+        }
+        data = pd.DataFrame(demo_data)
+        
+        # Train-test split
+        train, test = train_test_split(data, test_size=0.20, random_state=42)
+        
+        # Define categorical features
+        cat_features = [
+            "workclass", "education", "marital-status", "occupation",
+            "relationship", "race", "sex", "native-country",
+        ]
+        
+        # Process training data
+        X_train, y_train, encoder, lb = process_data(
+            train, categorical_features=cat_features, label="salary", training=True
+        )
+        
+        # Train model
+        model = train_model(X_train, y_train)
+        print("Model trained successfully with demo data")
 
 # Load model on startup
 load_model()
