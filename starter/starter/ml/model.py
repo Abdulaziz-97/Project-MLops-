@@ -16,7 +16,15 @@ def train_model(X_train, y_train):
     model : RandomForestClassifier
         Trained machine learning model.
     """
-    pass
+    from sklearn.ensemble import RandomForestClassifier
+    
+    # Initialize RandomForest with good default parameters
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    
+    # Train the model
+    model.fit(X_train, y_train)
+    
+    return model
 
 
 def compute_model_metrics(y, preds):
@@ -55,4 +63,6 @@ def inference(model, X):
     preds : np.ndarray
         Predictions from the model.
     """
-    pass
+    # Use the trained model to make predictions
+    preds = model.predict(X)
+    return preds

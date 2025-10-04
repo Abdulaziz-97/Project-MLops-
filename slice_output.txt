@@ -1,0 +1,140 @@
+Model Performance on Data Slices
+=================================
+
+Overall Performance:
+Precision: 0.7419
+Recall: 0.6384
+F1-Score: 0.6863
+Test set size: 6513
+
+
+============================================================
+Feature: workclass
+============================================================
+Private                        | Precision: 0.7376 | Recall: 0.6404 | F1: 0.6856 | Count:  4578
+State-gov                      | Precision: 0.7424 | Recall: 0.6712 | F1: 0.7050 | Count:   254
+Self-emp-not-inc               | Precision: 0.7064 | Recall: 0.4904 | F1: 0.5789 | Count:   498
+Self-emp-inc                   | Precision: 0.7807 | Recall: 0.7542 | F1: 0.7672 | Count:   212
+Federal-gov                    | Precision: 0.7971 | Recall: 0.7857 | F1: 0.7914 | Count:   191
+Local-gov                      | Precision: 0.7576 | Recall: 0.6818 | F1: 0.7177 | Count:   387
+?                              | Precision: 0.6538 | Recall: 0.4048 | F1: 0.5000 | Count:   389
+Without-pay                    | Insufficient data for metrics (only one class)
+
+============================================================
+Feature: education
+============================================================
+Some-college                   | Precision: 0.6857 | Recall: 0.5199 | F1: 0.5914 | Count:  1485
+HS-grad                        | Precision: 0.6594 | Recall: 0.4377 | F1: 0.5261 | Count:  2085
+Bachelors                      | Precision: 0.7523 | Recall: 0.7289 | F1: 0.7404 | Count:  1053
+Masters                        | Precision: 0.8271 | Recall: 0.8551 | F1: 0.8409 | Count:   369
+Assoc-acdm                     | Precision: 0.7000 | Recall: 0.5957 | F1: 0.6437 | Count:   198
+7th-8th                        | Precision: 0.0000 | Recall: 0.0000 | F1: 0.0000 | Count:   141
+11th                           | Precision: 1.0000 | Recall: 0.2727 | F1: 0.4286 | Count:   225
+Assoc-voc                      | Precision: 0.6471 | Recall: 0.5238 | F1: 0.5789 | Count:   273
+Prof-school                    | Precision: 0.8182 | Recall: 0.9643 | F1: 0.8852 | Count:   116
+9th                            | Precision: 1.0000 | Recall: 0.3333 | F1: 0.5000 | Count:   115
+5th-6th                        | Precision: 1.0000 | Recall: 0.5000 | F1: 0.6667 | Count:    62
+10th                           | Precision: 0.4000 | Recall: 0.1667 | F1: 0.2353 | Count:   183
+Doctorate                      | Precision: 0.8644 | Recall: 0.8947 | F1: 0.8793 | Count:    77
+12th                           | Precision: 1.0000 | Recall: 0.4000 | F1: 0.5714 | Count:    98
+1st-4th                        | Insufficient data for metrics (only one class)
+Preschool                      | Insufficient data for metrics (only one class)
+
+============================================================
+Feature: marital-status
+============================================================
+Divorced                       | Precision: 0.7600 | Recall: 0.3689 | F1: 0.4967 | Count:   920
+Married-civ-spouse             | Precision: 0.7346 | Recall: 0.6900 | F1: 0.7116 | Count:  2950
+Never-married                  | Precision: 0.8302 | Recall: 0.4272 | F1: 0.5641 | Count:  2126
+Separated                      | Precision: 1.0000 | Recall: 0.4211 | F1: 0.5926 | Count:   209
+Widowed                        | Precision: 1.0000 | Recall: 0.1579 | F1: 0.2727 | Count:   208
+Married-spouse-absent          | Precision: 1.0000 | Recall: 0.2500 | F1: 0.4000 | Count:    96
+Married-AF-spouse              | Precision: 1.0000 | Recall: 0.0000 | F1: 0.0000 | Count:     4
+
+============================================================
+Feature: occupation
+============================================================
+Adm-clerical                   | Precision: 0.6338 | Recall: 0.4688 | F1: 0.5389 | Count:   726
+Exec-managerial                | Precision: 0.7952 | Recall: 0.7531 | F1: 0.7736 | Count:   838
+Machine-op-inspct              | Precision: 0.5938 | Recall: 0.4043 | F1: 0.4810 | Count:   378
+Craft-repair                   | Precision: 0.6567 | Recall: 0.4862 | F1: 0.5587 | Count:   821
+Prof-specialty                 | Precision: 0.7880 | Recall: 0.7679 | F1: 0.7778 | Count:   828
+Sales                          | Precision: 0.7273 | Recall: 0.6667 | F1: 0.6957 | Count:   729
+Handlers-cleaners              | Precision: 0.5714 | Recall: 0.3333 | F1: 0.4211 | Count:   273
+Other-service                  | Precision: 1.0000 | Recall: 0.1923 | F1: 0.3226 | Count:   667
+Protective-serv                | Precision: 0.7353 | Recall: 0.5952 | F1: 0.6579 | Count:   136
+Priv-house-serv                | Insufficient data for metrics (only one class)
+Transport-moving               | Precision: 0.6250 | Recall: 0.4688 | F1: 0.5357 | Count:   317
+?                              | Precision: 0.6538 | Recall: 0.4048 | F1: 0.5000 | Count:   389
+Farming-fishing                | Precision: 0.5455 | Recall: 0.2143 | F1: 0.3077 | Count:   193
+Tech-support                   | Precision: 0.7143 | Recall: 0.6863 | F1: 0.7000 | Count:   189
+Armed-Forces                   | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Count:     3
+
+============================================================
+Feature: relationship
+============================================================
+Not-in-family                  | Precision: 0.7959 | Recall: 0.4149 | F1: 0.5455 | Count:  1702
+Wife                           | Precision: 0.7132 | Recall: 0.6783 | F1: 0.6953 | Count:   322
+Husband                        | Precision: 0.7370 | Recall: 0.6923 | F1: 0.7140 | Count:  2590
+Unmarried                      | Precision: 0.9231 | Recall: 0.2667 | F1: 0.4138 | Count:   702
+Own-child                      | Precision: 1.0000 | Recall: 0.1765 | F1: 0.3000 | Count:  1019
+Other-relative                 | Precision: 1.0000 | Recall: 0.3750 | F1: 0.5455 | Count:   178
+
+============================================================
+Feature: race
+============================================================
+White                          | Precision: 0.7404 | Recall: 0.6373 | F1: 0.6850 | Count:  5595
+Black                          | Precision: 0.7273 | Recall: 0.6154 | F1: 0.6667 | Count:   599
+Other                          | Precision: 1.0000 | Recall: 0.6667 | F1: 0.8000 | Count:    55
+Asian-Pac-Islander             | Precision: 0.7857 | Recall: 0.7097 | F1: 0.7458 | Count:   193
+Amer-Indian-Eskimo             | Precision: 0.6250 | Recall: 0.5000 | F1: 0.5556 | Count:    71
+
+============================================================
+Feature: sex
+============================================================
+Female                         | Precision: 0.7229 | Recall: 0.5150 | F1: 0.6015 | Count:  2126
+Male                           | Precision: 0.7445 | Recall: 0.6599 | F1: 0.6997 | Count:  4387
+
+============================================================
+Feature: native-country
+============================================================
+United-States                  | Precision: 0.7392 | Recall: 0.6321 | F1: 0.6814 | Count:  5870
+Mexico                         | Precision: 1.0000 | Recall: 0.3333 | F1: 0.5000 | Count:   114
+Puerto-Rico                    | Precision: 0.8333 | Recall: 0.8333 | F1: 0.8333 | Count:    22
+El-Salvador                    | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Count:    20
+?                              | Precision: 0.7500 | Recall: 0.6774 | F1: 0.7119 | Count:   125
+Columbia                       | Insufficient data for metrics (only one class)
+Poland                         | Precision: 0.6667 | Recall: 1.0000 | F1: 0.8000 | Count:    14
+Cambodia                       | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Count:     3
+Germany                        | Precision: 0.8462 | Recall: 0.8462 | F1: 0.8462 | Count:    32
+Philippines                    | Precision: 1.0000 | Recall: 0.6875 | F1: 0.8148 | Count:    35
+Canada                         | Precision: 0.6667 | Recall: 0.7500 | F1: 0.7059 | Count:    22
+Ecuador                        | Precision: 1.0000 | Recall: 0.5000 | F1: 0.6667 | Count:     5
+Italy                          | Precision: 0.7500 | Recall: 0.7500 | F1: 0.7500 | Count:    14
+Cuba                           | Precision: 0.6667 | Recall: 0.8000 | F1: 0.7273 | Count:    19
+Iran                           | Precision: 0.3333 | Recall: 0.2000 | F1: 0.2500 | Count:    12
+Jamaica                        | Insufficient data for metrics (only one class)
+Haiti                          | Insufficient data for metrics (only one class)
+South                          | Precision: 0.3333 | Recall: 0.5000 | F1: 0.4000 | Count:    13
+Taiwan                         | Precision: 0.7500 | Recall: 0.7500 | F1: 0.7500 | Count:    11
+Dominican-Republic             | Insufficient data for metrics (only one class)
+Ireland                        | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Count:     5
+Japan                          | Precision: 0.7500 | Recall: 0.7500 | F1: 0.7500 | Count:    11
+Scotland                       | Insufficient data for metrics (only one class)
+India                          | Precision: 0.8750 | Recall: 0.8750 | F1: 0.8750 | Count:    21
+Trinadad&Tobago                | Insufficient data for metrics (only one class)
+Hungary                        | Precision: 1.0000 | Recall: 0.5000 | F1: 0.6667 | Count:     3
+England                        | Precision: 0.6667 | Recall: 0.5000 | F1: 0.5714 | Count:    14
+Laos                           | Precision: 1.0000 | Recall: 0.0000 | F1: 0.0000 | Count:     4
+Hong                           | Precision: 0.5000 | Recall: 1.0000 | F1: 0.6667 | Count:     8
+Greece                         | Precision: 0.0000 | Recall: 0.0000 | F1: 0.0000 | Count:     7
+Portugal                       | Insufficient data for metrics (only one class)
+Guatemala                      | Insufficient data for metrics (only one class)
+China                          | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Count:    18
+France                         | Insufficient data for metrics (only one class)
+Nicaragua                      | Insufficient data for metrics (only one class)
+Vietnam                        | Insufficient data for metrics (only one class)
+Thailand                       | Insufficient data for metrics (only one class)
+Peru                           | Precision: 0.0000 | Recall: 0.0000 | F1: 0.0000 | Count:     5
+Honduras                       | Precision: 1.0000 | Recall: 1.0000 | F1: 1.0000 | Count:     4
+Yugoslavia                     | Insufficient data for metrics (only one class)
