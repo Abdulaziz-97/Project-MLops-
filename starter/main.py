@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 from typing import Literal
 from fastapi import FastAPI
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 # Import our ML functions
 from starter.ml.data import process_data
@@ -170,29 +170,30 @@ class CensusData(BaseModel):
         "Trinadad&Tobago", "Peru", "Hong", "Holand-Netherlands", "?"
     ] = Field(..., alias="native-country", description="Native country", example="United-States")
     
-    class Config:
-        """Pydantic configuration."""
-        # Allow population by field name or alias
-        allow_population_by_field_name = True
-        # Example data for automatic documentation
-        schema_extra = {
-            "example": {
-                "age": 39,
-                "workclass": "State-gov",
-                "fnlgt": 77516,
-                "education": "Bachelors",
-                "education-num": 13,
-                "marital-status": "Never-married",
-                "occupation": "Adm-clerical",
-                "relationship": "Not-in-family",
-                "race": "White", 
-                "sex": "Male",
-                "capital-gain": 2174,
-                "capital-loss": 0,
-                "hours-per-week": 40,
-                "native-country": "United-States"
-            }
+    # Pydantic v2 configuration
+    model_config = ConfigDict(
+        populate_by_name=True,  # Allow population by field name or alias
+        json_schema_extra={
+            "examples": [
+                {
+                    "age": 39,
+                    "workclass": "State-gov",
+                    "fnlgt": 77516,
+                    "education": "Bachelors",
+                    "education-num": 13,
+                    "marital-status": "Never-married",
+                    "occupation": "Adm-clerical",
+                    "relationship": "Not-in-family",
+                    "race": "White", 
+                    "sex": "Male",
+                    "capital-gain": 2174,
+                    "capital-loss": 0,
+                    "hours-per-week": 40,
+                    "native-country": "United-States"
+                }
+            ]
         }
+    )
 
 
 class PredictionResponse(BaseModel):
